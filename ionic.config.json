@@ -1,5 +1,7 @@
 {
   "name": "ionic-pouchdb-sqlite",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { NavParams,NavController,ModalController } from '@ionic/angular';
 import { EmployeeService } from '../employee.service';
 
 
@@ -14,7 +14,7 @@ export class EmployeePage implements OnInit {
   canUpdate;
   navParams;
   viewCtrl;   
-  constructor(navParams: NavParams, private employeeService: EmployeeService) {
+  constructor(navParams: NavParams, private employeeService: EmployeeService, private modalController: ModalController) {
 
   }
 ngOnInit(){
@@ -31,20 +31,34 @@ ngOnInit(){
 
         if (this.canUpdate) {
             this.employeeService.update(this.employee)
+            .then(res=>{
+               // this.viewCtrl.dismiss(res);
+               // this.navCtrl.pop();
+                this.modalController.dismiss(res)
+            })
                 .catch(()=>{});
         } else {
             this.employeeService.create(this.employee)
+            .then((res)=>{
+                console.log(res);
+                this.modalController.dismiss(res);
+               // this.navCtrl.pop()
+              //  this.viewCtrl.dismiss(res);
+            })
                 .catch(()=>{});
         }
 
-        this.viewCtrl.dismiss(this.employee);
+       
     }
 
     delete() {
         this.employeeService.remove(this.employee)
             .catch(()=>{});
 
-        this.viewCtrl.dismiss(this.employee);
+        }
+
+    goBack(){
+        this.modalController.dismiss();
     }
 
 

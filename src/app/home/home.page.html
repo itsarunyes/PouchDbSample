@@ -10,13 +10,18 @@
 </ion-header>
 
 <ion-content padding>
-cs
-    <ion-list>
-        <ion-item *ngFor="let emp of employees">
-          <div (click)="showDetails(employee)">{{ emp.firstName }} {{emp.lastName}}</div> <div style="float:right;width:100px"> <button (click)='deleteEmp($event,emp)'>delete</button></div>
-        </ion-item>
-      </ion-list>
+      <ion-grid>
+          <ion-row *ngFor="let emp of employees">
+            <ion-col size="8" (click)="showDetails(employee)">
+              {{ emp.firstName }} {{emp.lastName}}
+            </ion-col>
+            <ion-col>
+              <ion-button color="danger" size="small" (click)='deleteEmp($event,emp)'>delete</ion-button>
+            </ion-col>
+          </ion-row>
+          <!-- <div (click)="showDetails(employee)">{{ emp.firstName }} {{emp.lastName}}</div> <div style="float:right;width:100px"> <button (click)='deleteEmp($event,emp)'>delete</button></div> -->
+       
+      </ion-grid>
 
-
-      <button (click)="addEmp()">Add EMp</button>
+      <ion-button color="primary" (click)="addEmp()">Add </ion-button>
 </ion-content>

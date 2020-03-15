@@ -8,6 +8,7 @@
       </button>
     </ion-buttons>    
   </ion-navbar> -->
+  <ion-button color="medium" (click)="goBack()">Back</ion-button>
 
 </ion-header>
 
@@ -23,5 +24,6 @@
             <ion-input text-right type="text" [(ngModel)]="employee.lastName"></ion-input>
         </ion-item>        
     </ion-list>
-    <button ion-button block (click)="addOrUpdate()">Add/Update Employee</button>
+    
+    <ion-button color="primary" (click)="addOrUpdate()">Add/Update Employee</ion-button>
 </ion-content>

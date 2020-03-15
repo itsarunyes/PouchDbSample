@@ -1,4 +1,4 @@
-import { Component,OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { EmployeePage } from './../employee/employee.page';
 import { EmployeeService } from '../employee.service';
@@ -9,45 +9,53 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  public employees : any;
-  constructor(public modalCtrl: ModalController, public employeeService : EmployeeService) {
+  public employees: any;
+  constructor(public modalCtrl: ModalController, public employeeService: EmployeeService) {
 
 
   }
-    ngOnInit() {
+  ngOnInit() {
 
-            this.employeeService.createPouchDB();
-          //   let employee = {
-          //     'firstName':'arun',
-          //     'lastName':'s'
-          //   }
-          //  this.employeeService.create(employee);
-            this.employeeService.read().then(employees => {
-                    this.employees = employees;
-                })
-                .catch((err)=>{});
+    this.employeeService.createPouchDB();
+    //   let employee = {
+    //     'firstName':'arun',
+    //     'lastName':'s'
+    //   }
+    //  this.employeeService.create(employee);
+    this.employeeService.read().then(employees => {
+      this.employees = employees;
+    })
+      .catch((err) => { });
 
-    }
+  }
 
-    async showDetails(employee) {
-      console.log(employee);
-        let modal =  await this.modalCtrl.create({
-        component: EmployeePage,
-         componentProps: employee,
-        // cssClass: yourclass
-      });
-      modal.present();
-    }  
+  async showDetails(employee) {
+    console.log(employee);
+    let modal = await this.modalCtrl.create({
+      component: EmployeePage,
+      componentProps: employee,
+      // cssClass: yourclass
+    });
+    
+    modal.onDidDismiss().then((res)=>{
+      if(res.data){
+        this.employees = res.data;
 
-    deleteEmp(e,emp){
-e.preventDefault();
-delete emp.Date;
-this.employeeService.remove(emp).subscribe((posts) => {
-  console.log(posts);
-});;
-    }
+      }
+    });
+    modal.present();
 
-    addEmp(){
-      this.showDetails('');
-    }
+  }
+
+  deleteEmp(e, emp) {
+    e.preventDefault();
+    delete emp.Date;
+    this.employeeService.remove(emp).subscribe((emp) => {
+      this.employees =emp;
+    });;
+  }
+
+  addEmp() {
+    this.showDetails('');
+  }
 }

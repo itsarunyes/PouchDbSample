@@ -15,7 +15,9 @@ Download or clone the repository .
 Then run command  ' ionic serve '
 
 To see the changes in couchDB , open new window in browser with address  'http://127.0.0.1:5984/_utils'
+
 To login , user credentials like below :
+
 username : admin
 password: admin
 

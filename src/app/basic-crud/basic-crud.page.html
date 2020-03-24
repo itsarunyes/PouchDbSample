@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-button color="medium" (click)="goBack()">Back</ion-button>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input text-right type="text" [(ngModel)]="crud.name"></ion-input>
+        </ion-item>      
+    </ion-list>
+    
+    <ion-button color="primary" (click)="addOrUpdate()">Add/Update crud</ion-button>
+</ion-content>

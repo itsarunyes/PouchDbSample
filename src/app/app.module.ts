@@ -12,10 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { EmployeePage} from './employee/employee.page';
 import { FormsModule } from '@angular/forms';
 
+
+import { QuizCategoryPageModule } from './quiz-category/quiz-category.module';
+import { QuizTypePageModule } from './quiz-type/quiz-type.module';
+
 @NgModule({
   declarations: [AppComponent,EmployeePage],
   entryComponents: [EmployeePage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,QuizCategoryPageModule,QuizTypePageModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,27 +1,49 @@
 <ion-header>
-  <!-- <ion-navbar>
-    <ion-title>The Employees Database</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="addEmployee()">
-          <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>    
-  </ion-navbar> -->
+  <ion-toolbar>
+    <ion-title>HOME</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-      <ion-grid>
-          <ion-row *ngFor="let emp of employees">
-            <ion-col size="8" (click)="showDetails(employee)">
-              {{ emp.firstName }} {{emp.lastName}}
-            </ion-col>
-            <ion-col>
-              <ion-button color="danger" size="small" (click)='deleteEmp($event,emp)'>delete</ion-button>
-            </ion-col>
-          </ion-row>
-          <!-- <div (click)="showDetails(employee)">{{ emp.firstName }} {{emp.lastName}}</div> <div style="float:right;width:100px"> <button (click)='deleteEmp($event,emp)'>delete</button></div> -->
-       
-      </ion-grid>
+  <ion-grid>
+    <ion-row *ngFor="let emp of employees">
+      <ion-col size="8" (click)="showDetails(emp)">
+        {{ emp.firstName }} {{emp.lastName}}
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" size="small" (click)='deleteEmp($event,emp)'>delete</ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <div (click)="showDetails(employee)">{{ emp.firstName }} {{emp.lastName}}</div> <div style="float:right;width:100px"> <button (click)='deleteEmp($event,emp)'>delete</button></div> -->
 
-      <ion-button color="primary" (click)="addEmp()">Add </ion-button>
+  </ion-grid>
+
+  <ion-button color="primary" (click)="addEmp()">Add </ion-button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        Quiz Category
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="primary" (click)="navigate('quiz-category-list')">Go </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        Quiz Type
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="primary" (click)="navigate('quiz-type-list')">Go </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        Quiz Creation
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="primary" [routerLink]="['/quiz-type-list']">Go </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

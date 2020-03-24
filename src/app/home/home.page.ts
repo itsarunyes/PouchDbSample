@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { EmployeePage } from './../employee/employee.page';
 import { EmployeeService } from '../employee.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,7 +10,8 @@ import { EmployeeService } from '../employee.service';
 })
 export class HomePage implements OnInit {
   public employees: any;
-  constructor(public modalCtrl: ModalController, public employeeService: EmployeeService) {
+  constructor(public modalCtrl: ModalController, public employeeService: EmployeeService,
+    private router: Router) {
 
 
   }
@@ -33,7 +34,7 @@ export class HomePage implements OnInit {
     console.log(employee);
     let modal = await this.modalCtrl.create({
       component: EmployeePage,
-      componentProps: employee,
+      componentProps: { employee: employee },
       // cssClass: yourclass
     });
     
@@ -57,5 +58,10 @@ export class HomePage implements OnInit {
 
   addEmp() {
     this.showDetails('');
+  }
+
+  
+  navigate(routeTo){
+    this.router.navigate(['/'+routeTo+''])
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { NavParams,NavController,ModalController } from '@ionic/angular';
 import { EmployeeService } from '../employee.service';
 
@@ -9,18 +9,18 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['employee.page.scss']
 })
 export class EmployeePage implements OnInit {
-  employee: any = {};
+ // employee: any = {};
   canDelete;
   canUpdate;
   navParams;
   viewCtrl;   
+  @Input() employee: any;
   constructor(navParams: NavParams, private employeeService: EmployeeService, private modalController: ModalController) {
 
   }
 ngOnInit(){
-    var employee = this.navParams.get('employee');
-    if(employee){
-            this.employee = employee;
+   // var employee = this.navParams.get('employee');
+    if(this.employee){
             this.canDelete = true;
             this.canUpdate = true;
     }

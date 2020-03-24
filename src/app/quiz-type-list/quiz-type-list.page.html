@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> <ion-button color="medium" (click)="goBack()">Back</ion-button>quiz-type-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+      <ion-row *ngFor="let type of quizTypes">
+        <ion-col size="8" (click)="showDetails(type)">
+          {{ type.name}}
+        </ion-col>
+        <ion-col>
+          <ion-button color="danger" size="small" (click)='deleteType($event,type)'>delete</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-button color="primary" (click)="addType()">Add </ion-button>
+</ion-content>

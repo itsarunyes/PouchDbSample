@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color="medium" (click)="goBack()">Back</ion-button> <ion-title>quiz-type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input text-right type="text" [(ngModel)]="quizType.name"></ion-input>
+        </ion-item>      
+    </ion-list>
+    
+    <ion-button color="primary" (click)="addOrUpdate()">Add/Update Quiz type</ion-button>
+</ion-content>
+

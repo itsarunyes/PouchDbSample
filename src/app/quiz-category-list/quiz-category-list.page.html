@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> <ion-button color="medium" (click)="goBack()">Back</ion-button>quiz-category-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-grid>
+          <ion-row *ngFor="let category of quizCategories">
+            <ion-col size="8" (click)="showDetails(category)">
+              {{ category.name}}
+            </ion-col>
+            <ion-col>
+              <ion-button color="danger" size="small" (click)='deleteCategory($event,category)'>delete</ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+      <ion-button color="primary" (click)="addCategory()">Add </ion-button>
+</ion-content>

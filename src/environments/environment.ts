@@ -6,6 +6,10 @@ export const environment = {
   production: false
 };
 
+export const Constants ={
+  dburl : 'http://admin:admin@127.0.0.1:5984/'
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

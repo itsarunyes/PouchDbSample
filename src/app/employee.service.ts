@@ -4,6 +4,7 @@ import PouchDB from 'pouchdb';
 import cordovaSqlitePlugin from 'pouchdb-adapter-cordova-sqlite';
 import { resolve } from 'url';
 import { Subject } from 'rxjs';
+import {Constants} from './../environments/environment';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class EmployeeService {
 
 
   createPouchDB() {
-    this.replicate = PouchDB.sync('db','http://admin:admin@127.0.0.1:5984/employee',{
+    this.replicate = PouchDB.sync('db', Constants.dburl + 'employee',{
       live:true,
       retry:true
     }).on('change', async function(){
